@@ -4,10 +4,78 @@
   box-sizing: inherit;
 }
 
+:root {
+  --max-width: 1440px;
+  --green-blue: hsl(160, 71%, 50%);
+}
+
 html {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: sans-serif;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 2.5em;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2em;
+}
+
+.card {
+  display: flex;
+  flex-flow: column wrap;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 21px 1px hsl(0, 0%, 93%);
+}
+
+.card-img {
+  display: block;
+  height: 300px;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+  transition: filter 0.2s ease-in-out;
+}
+
+.card-motto {
+  font-size: 1.25em;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  background-color: var(--green-blue);
+  color: hsl(0, 100%, 100%);
+  border-radius: 0 0 10px 10px;
 }
