@@ -1,0 +1,14 @@
+{
+  "name": "image-gallery",
+  "version": "1.0.0",
+  "description": "This demo displays how to create a vanilla image gallery through HTML, CSS, and JavaScript.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
