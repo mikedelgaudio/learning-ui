@@ -12,7 +12,7 @@
   --rainbow-5: blue;
   --rainbow-6: indigo;
   --rainbow-7: violet;
-  --surface: hsl(50, 0%, 0%);
+  --surface: hsl(0, 0%, 0%);
   --text: hsl(0, 0%, 90%);
 }
 
@@ -26,6 +26,7 @@ body {
   padding: 0 2rem;
   background: var(--surface);
   color: var(--text);
+  line-height: 1.5;
 }
 
 .header {
