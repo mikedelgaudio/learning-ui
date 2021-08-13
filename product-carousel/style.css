@@ -23,7 +23,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: system-ui, sans-serif;
   background: var(--lighter-gray);
 }
 
@@ -76,10 +76,6 @@ section {
   visibility: visible;
 }
 
-.product-card:hover .product-img {
-  filter: brightness(50%);
-}
-
 .product-btn {
   opacity: 0;
   visibility: hidden;
@@ -119,16 +115,19 @@ figure {
   margin: 0;
   max-width: inherit;
   height: 450px;
+  overflow: hidden;
 }
 
 .product-img {
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
-  filter: brightness(100%);
-  -webkit-transition: -webkit-filter 500ms linear;
-  transition: filter 500ms linear;
+  transition: transform 260ms linear;
   background-image: linear-gradient(to bottom, hsl(0 0% 40%), hsl(0 0% 20%));
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.1);
 }
 
 figcaption {
