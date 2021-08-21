@@ -14,15 +14,17 @@ const sorter = (colIndex, e) => {
     return -1;
   });
 
+  console.table(tData);
+
   const element = e.target;
   if (element.classList.contains("up")) {
-    element.classList.toggle("down");
+    element.classList.add("down");
+    element.classList.remove("up");
     tData.reverse();
   } else {
-    element.classList.toggle("up");
-    tData.reverse();
+    element.classList.add("up");
+    element.classList.remove("down");
   }
-
   data2Table(tData);
 };
 
@@ -43,11 +45,8 @@ const table2Data = (tableRows) => {
 const data2Table = (tData) => {
   for (let i = 0; i < table.rows.length - 1; i++) {
     const newRowData = tData[i];
-
     table.rows[i + 1].querySelectorAll("td").forEach((cell, j) => {
       cell.textContent = newRowData[j];
     });
-
-    //tData.push(newRowData);
   }
 };
