@@ -1,5 +1,7 @@
 const scroller = document.querySelector(".horizontal-media-scroller");
 
+const getImage = async () => {};
+
 for (let i = 0; i < 10; i++) {
   const listElm = document.createElement("li");
   const linkElm = document.createElement("a");

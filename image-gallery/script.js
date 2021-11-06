@@ -1,5 +1,4 @@
 const gallery = document.querySelector(".gallery");
-const IMAGE_URL = "https://source.unsplash.com/random";
 
 // TODO: Use unsplash API to grab author name and set as
 // caption.

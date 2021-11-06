@@ -50,3 +50,13 @@ const data2Table = (tData) => {
     });
   }
 };
+
+const languages = [
+  { name: "JavaScript", color: "yellow" },
+  { name: "TypeScript", color: "blue" },
+  { name: "CSS", color: "pink" },
+];
+
+console.table(languages);
+
+console.log(languages);
