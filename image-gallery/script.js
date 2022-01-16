@@ -6,11 +6,11 @@ const gallery = document.querySelector(".gallery");
 const API_URL = "https://api.unsplash.com/photos/random";
 const HEADERS = {
   "Accept-Version": "v1",
-  //Authorization: "Client-ID " + "",
+  Authorization: "Client-ID " + "Q4-KrjLeh9rB5XZ3yM2A0BblOBIoxEgarmYLv8qH5eY",
 };
 
-const getImage = async () => {
-  const response = await fetch(API_URL, {
+const getImage = async (d) => {
+  const response = await fetch(`${API_URL}?sig=${d}`, {
     method: "GET",
     headers: HEADERS,
   }).catch((err) => {
@@ -26,44 +26,60 @@ const getImage = async () => {
 
 // BONUS: Use image color to set background color tone
 
-for (let i = 0; i < 1; i++) {
-  getImage()
-    .then((data) => {
-      const card = document.createElement("div");
-      card.classList.add("card");
+const display = async (d) => {
+  try {
+    const data = await getImage(d);
+    console.log(data);
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-      const cardImgContainer = document.createElement("div");
-      cardImgContainer.classList.add("card-img-wrapper");
+    const cardImgContainer = document.createElement("div");
+    cardImgContainer.classList.add("card-img-wrapper");
 
-      const image = document.createElement("img");
-      image.classList.add("card-img");
-      const mottoContainer = document.createElement("div");
-      mottoContainer.classList.add("card-motto");
+    const image = document.createElement("img");
+    image.classList.add("card-img");
+    const mottoContainer = document.createElement("div");
+    mottoContainer.classList.add("card-motto");
 
-      const motto = document.createElement("span");
+    const motto = document.createElement("span");
 
-      image.src = data?.urls?.small;
-      image.alt = data?.alt_description;
-      image.height = data?.height;
-      motto.textContent = data?.user?.name;
+    image.src = data?.urls?.small;
+    image.alt = data?.alt_description;
+    image.height = data?.height;
+    motto.textContent = data?.user?.name;
 
-      mottoContainer.appendChild(motto);
-      cardImgContainer.appendChild(image);
+    mottoContainer.appendChild(motto);
+    cardImgContainer.appendChild(image);
 
-      card.appendChild(cardImgContainer);
-      card.appendChild(mottoContainer);
+    card.appendChild(cardImgContainer);
+    card.appendChild(mottoContainer);
 
-      gallery.appendChild(card);
-    })
-    .catch((err) => {
-      const container = document.createElement("div");
-      container.classList.add("error-container");
+    gallery.appendChild(card);
+  } catch (e) {
+    // const container = document.createElement("div");
+    // container.classList.add("error-container");
+    // const caption = document.createElement("span");
+    // caption.classList.add("error-caption");
+    // caption.textContent = "Sorry, we were unable to obtain some images.";
+    // container.appendChild(caption);
+    // document.querySelector(".main").appendChild(container);
+  }
+};
 
-      const caption = document.createElement("span");
-      caption.classList.add("error-caption");
-      caption.textContent = "Sorry, we were unable to obtain some images.";
+let displayError = false;
 
-      container.appendChild(caption);
-      document.querySelector(".main").appendChild(container);
-    });
+const errorBanner = () => {};
+
+try {
+  for (let i = 0; i < 3; i++) display(i);
+} catch (e) {
+  const container = document.createElement("div");
+  container.classList.add("error-container");
+
+  const caption = document.createElement("span");
+  caption.classList.add("error-caption");
+  caption.textContent = "Sorry, we were unable to obtain some images.";
+
+  container.appendChild(caption);
+  document.querySelector(".main").appendChild(container);
 }
