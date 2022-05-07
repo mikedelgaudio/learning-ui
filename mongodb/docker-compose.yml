@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  db:
+    container_name: mongo
+    image: mongo:5.0.8
+    ports:
+      - "27017:27017"
+    networks:
+      - public
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+  db-cache:
+    container_name: redis
+    build:
+      context: ./
+      dockerfile: Dockerfile.redis
+    ports:
+      - "6379:6379"
+    networks:
+      - public
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+networks:
+  public:
+    external: true
+volumes:
+  mongo-data:
+    driver: local
+  redis-data:
+    driver: local

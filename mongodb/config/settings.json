@@ -1,0 +1,10 @@
+{
+  "mongoConfig": {
+    "serverUrl": "mongodb://localhost:27017/",
+    "database": "practicing"
+  },
+  "redisConfig": {
+    "serverUrl": "redis://localhost:6379",
+    "database": "practicing"
+  }
+}
