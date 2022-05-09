@@ -22,8 +22,6 @@ router.post("/book", async (req, res) => {
     const result = await libraryData.create(title, author, text);
     res.status(201).json(result);
   } catch (e) {
-    console.log(e);
-
     res.status(400).json({ error: e.message });
   }
 });
